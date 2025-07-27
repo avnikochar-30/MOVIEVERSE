@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MovieVerse</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background-color: #0a0a0a;
+            color: white;
+        }
+
+        .navbar {
+            padding: 20px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+       
+        .account-container {
+            position: relative;
+            display: inline-block;
+        }
+
+        .account-btn {
+            background-color: #1e88e5;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 4px;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            right: 0;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+            border-radius: 4px;
+            margin-top: 5px;
+        }
+
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            transition: background-color 0.3s;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #ddd;
+        }
+
+        .account-container:hover .dropdown-content {
+            display: block;
+        }
+
+        /* Rest of your existing styles */
+        .main-content {
+            padding: 50px;
+        }
+
+        .hero {
+            display: flex;
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        .hero-info {
+            flex: 1;
+        }
+
+        .hero-poster {
+            width: 300px;
+            border-radius: 8px;
+        }
+
+        .title {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+
+        .cast {
+            margin: 20px 0;
+        }
+
+        .cast-images {
+            display: flex;
+            gap: 10px;
+        }
+
+        .cast-images img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .btn-primary {
+            background-color: #1e88e5;
+            color: white;
+        }
+
+        .btn-secondary {
+            background-color: #333;
+            color: white;
+        }
+
+        .popular-section {
+            margin-top: 50px;
+        }
+
+        .popular-section h2 {
+            margin-bottom: 20px;
+        }
+
+        .movie-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .movie-card img {
+            width: 100%;
+            border-radius: 8px;
+            transition: transform 0.3s;
+        }
+
+        .movie-card img:hover {
+            transform: scale(1.05);
+        }
+
+        .mood-selector {
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+
+        .dropdown-container {
+            margin: 20px auto;
+            display: inline-block;
+            text-align: left;
+        }
+
+        label {
+            font-size: 18px;
+            font-weight: bold;
+            color: white;
+        }
+
+        select {
+            width: 300px;
+            padding: 10px;
+            font-size: 16px;
+            margin-top: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #fff;
+            color: #333;
+            cursor: pointer;
+        }
+
+        select:focus {
+            outline: none;
+            border-color: #555;
+            box-shadow: 0 0 5px #aaa;
+        }
+
+        .emoji {
+            font-size: 18px;
+            margin-right: 8px;
+        }
+
+        .footer {
+            margin-top: 30px;
+            font-size: 14px;
+            color: #888;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">MOVIEVERSE(Movies for every mood)</div>
+        <div class="account-container">
+            <a href="#" class="account-btn">Account</a>
+            <div class="dropdown-content">
+                <a href="#">Login</a>
+                <a href="#">Sign Up</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <div class="hero">
+            <div class="hero-info">
+                <h1 class="title">Welcome to MOVIEVERSE</h1>
+                <p>A website to find movies and series depending on your mood.</p>
+                <p>If you haven't signed up. Sign up now.</p>
+                
+                <div class="mood-selector">
+                    <h2>🎬 Find Your Perfect Movie! 🎥</h2>
+                    <div class="dropdown-container">
+                        <label for="mood-select">Choose your mood:</label><br>
+                        <select id="mood-select">
+                            <option value="happy">😊 Happy</option>
+                            <option value="sad">😢 Sad</option>
+                            <option value="excited">🤩 Excited</option>
+                            <option value="adventurous">🌍 Adventurous</option>
+                            <option value="inspired">💡 Inspired</option>
+                            <option value="bored">😴 Bored</option>
+                        </select>
+                    </div>
+                    <div class="footer">
+                        <p>Let your mood decide what you'll watch today! 🍿</p>
+                    </div>
+                </div>
+
+                <div class="buttons">
+                    <a href="#" class="btn btn-primary">Search</a>
+                </div>
+            </div>
+            <img src="https://www.newsviewsnetwork.com/wp-content/uploads/2012-movie-collage31-scaled.jpg" alt="Movies" width="400px" height="400px" class="hero-poster">
+        </div>
+
+        <section class="popular-section">
+            <h2>Popular Movies for: </h2>
+            <h3>Happy Mood 😊</h3>
+            <br>
+            <div class="movie-grid">
+                <div class="movie-card">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTCj5p487b7pNPPBVfBEVq6c9L-_i9mfGDg-hkVmw92vFLyeQcQNQJ8gloUo1Iopy1BaY9Z5Q" alt="The Intern">
+                </div>
+                <div class="movie-card">
+                    <img src="https://assets-in.bmscdn.com/iedb/movies/images/mobile/thumbnail/xlarge/zindagi-na-milegi-dobara-et00006440-07-01-2021-11-25-35.jpg" alt="Zindagi na milegi dobara">
+                </div>
+                <div class="movie-card">
+                    <img src="https://images.moviesanywhere.com/08b5312f6334adf18414ccfb2093960a/80420ae5-16eb-41ce-b0be-a6f2a04b1a16.jpg" alt="Movie 3">
+                </div>
+                <div class="movie-card">
+                    <img src="https://play-lh.googleusercontent.com/OYz7f_yXWhyhpLO_6d-65nqCKDD47MLdCXJFhJZven7V-Kg83AF4yi01o76uaod-M28C" alt="Movie 4">
+                </div>
+                <div class="movie-card">
+                    <img src="https://play-lh.googleusercontent.com/TBBTQiK1djPzR4S1kB252SbysI761xNYzDVvausZt3-NllZqelq8VSEwUJseVujWgOs" alt="Movie 5">
+                </div>
+                <div class="movie-card">
+                    <img src="https://lumiere-a.akamaihd.net/v1/images/p_findingnemo_19752_05271d3f.jpeg?region=0%2C0%2C540%2C810" alt="Movie 6">
+                </div>
+            </div>
+              <br>
+
+            <h3>Sad Mood 😞</h3>
+<br>
+<div class="movie-grid">
+    <div class="movie-card">
+        <img src="https://m.media-amazon.com/images/M/MV5BMTAwNDEyODU1MjheQTJeQWpwZ15BbWU2MDc3NDQwNw@@._V1_.jpg" alt="The Pursuit of Happyness">
+    </div>
+    <div class="movie-card">
+        <img src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcS4LZSRQsIm_BV1QY-N2vHLn7RbtGegTbAihyI2cdlctpXqbIeXbnYoB-0hlPWP9gUek7W7" alt="Dear Zindagi">
+    </div>
+    <div class="movie-card">
+        <img src="https://m.media-amazon.com/images/M/MV5BZTFjMTAzZmYtM2JiNi00ZDlhLWFiMmMtMWMzM2U4NzkxMjE5XkEyXkFqcGc@._V1_.jpg" alt="A Beautiful Mind">
+    </div>
+    <div class="movie-card">
+        <img src="https://upload.wikimedia.org/wikipedia/en/thumb/b/b4/Taare_Zameen_Par_Like_Stars_on_Earth_poster.png/220px-Taare_Zameen_Par_Like_Stars_on_Earth_poster.png" alt="Taare Zameen Par">
+    </div>
+    <div class="movie-card">
+        <img src="https://m.media-amazon.com/images/M/MV5BNWZlNTI0ZGUtNzhlNy00OWUzLTgxMzEtNjRlYmQ1OWQyZDdmXkEyXkFqcGc@._V1_.jpg" alt="Masaan">
+    </div>
+    <div class="movie-card">
+        <img src="https://hips.hearstapps.com/hmg-prod/images/sad-movies-netflix-the-help-1616966066.jpg" alt="The Fault in Our Stars">
+    </div>
+</div>   
+<h3>Adventurous Mood 🌍</h3>
+<br>
+<div class="movie-grid">
+    <div class="movie-card">
+        <img src="https://m.media-amazon.com/images/M/MV5BMjM2MDgxMDg0Nl5BMl5BanBnXkFtZTgwNTM2OTM5NDE@._V1_.jpg" alt="Jurassic Park">
+    </div>
+    <div class="movie-card">
+        <img src="https://m.media-amazon.com/images/M/MV5BNzA5ZDNlZWMtM2NhNS00NDJjLTk4NDItYTRmY2EwMWZlMTY3XkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_.jpg" alt="The Lord of the Rings">
+    </div>
+    <div class="movie-card">
+        <img src="https://m.media-amazon.com/images/M/MV5BNDYxNjQyMjAtNTdiOS00NGYwLWFmNTAtNThmYjU5ZGI2YTI1XkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_.jpg" alt="The Avengers">
+    </div>
+    <div class="movie-card">
+        <img src="https://m.media-amazon.com/images/M/MV5BMjAxMzY3NjcxNF5BMl5BanBnXkFtZTcwNTI5OTM0Mw@@._V1_.jpg" alt="Inception">
+    </div>
+    <div class="movie-card">
+        <img src="https://m.media-amazon.com/images/M/MV5BZDEyN2NhMjgtMjdhNi00MmNlLWE5YTgtZGE4MzNjMTRlMGEwXkEyXkFqcGdeQXVyNDUyOTg3Njg@._V1_.jpg" alt="Spider-Man">
+    </div>
+    <div class="movie-card">
+        <img src="https://m.media-amazon.com/images/M/MV5BNzQzOTk3OTAtNDQ0Zi00ZTVkLWI0MTEtMDllZjNkYzNjNTc4L2ltYWdlXkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_.jpg" alt="The Matrix">
+    </div>
+</div>
+
+<h3>Excited Mood 🤩</h3>
+<br>
+<div class="movie-grid">
+    <div class="movie-card">
+        <img src="https://m.media-amazon.com/images/M/MV5BMjM3MjQ1MzkxNl5BMl5BanBnXkFtZTgwODk1ODgyMjI@._V1_.jpg" alt="Baby Driver">
+    </div>
+    <div class="movie-card">
+        <img src="https://m.media-amazon.com/images/M/MV5BMjE5MzcyNjk1M15BMl5BanBnXkFtZTcwMjQ4MjcxOQ@@._V1_.jpg" alt="Iron Man 3">
+    </div>
+    <div class="movie-card">
+        <img src="https://play-lh.googleusercontent.com/ZNy9qKUHnn8V25CICjA9pMXUHgJpDj_UOjE18jfRyM0pUgMc4-5QeNcrUpVjsWNOcWGzCw" alt="Rush Hour 3">
+    </div>
+    <div class="movie-card">
+        <img src="https://m.media-amazon.com/images/M/MV5BYzE5MjY1ZDgtMTkyNC00MTMyLThhMjAtZGI5OTE1NzFlZGJjXkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_.jpg" alt="Deadpool">
+    </div>
+    <div class="movie-card">
+        <img src="https://m.media-amazon.com/images/M/MV5BMTczNTI2ODUwOF5BMl5BanBnXkFtZTcwMTU0NTIzMw@@._V1_.jpg" alt="Iron Man">
+    </div>
+    <div class="movie-card">
+        <img src="https://m.media-amazon.com/images/M/MV5BMjIyNTQ5NjQ1OV5BMl5BanBnXkFtZTcwODg1MDU4OA@@._V1_.jpg" alt="Django Unchained">
+    </div>
+</div>
+                
+
+
+            </div>
+        </section>
+    </main>
+</body>
+</html>
